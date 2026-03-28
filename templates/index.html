@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Water Workload Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="description" content="Manage Data Centers, AI Workloads, and Water Consumption seamlessly mapping relational databases to dynamic frontends.">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="logo">
+            <h2>💧 AI Water DBMS</h2>
+        </div>
+        <ul class="nav-links">
+            <li class="active" data-target="dashboard">Dashboard</li>
+            <li data-target="datacenters">Data Centers</li>
+            <li data-target="workloads">AI Workloads</li>
+            <li data-target="water">Water Logs</li>
+            <li data-target="analytics">Analytics</li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="page active">
+            <header>
+                <h1>System Overview</h1>
+                <p>Monitor your resource usage effectively across multiple regions.</p>
+            </header>
+            <div class="cards-grid">
+                <div class="card glass">
+                    <h3>Total Data Centers</h3>
+                    <h2 id="kpi-dcs">0</h2>
+                </div>
+                <div class="card glass">
+                    <h3>Active Workloads</h3>
+                    <h2 id="kpi-workloads">0</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Centers Section -->
+        <section id="datacenters" class="page">
+            <header>
+                <h1>Manage Data Centers</h1>
+            </header>
+            <div class="glass form-container">
+                <form id="form-dc">
+                    <div class="input-group">
+                        <input type="text" id="dc-name" placeholder="Data Center Name" required>
+                        <input type="text" id="dc-loc" placeholder="Location" required>
+                        <button class="btn-primary" type="submit">Add New</button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container">
+                <table id="table-dcs">
+                    <thead><tr><th>ID</th><th>Name</th><th>Location</th><th>Action</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- AI Workloads Section -->
+        <section id="workloads" class="page">
+            <header>
+                <h1>Manage AI Workloads</h1>
+            </header>
+            <div class="glass form-container">
+                <form id="form-wl">
+                    <div class="input-group">
+                        <input type="text" id="wl-name" placeholder="Workload Name" required>
+                        <select id="wl-type" required>
+                            <option value="">Select Type</option>
+                            <option value="Training">Training</option>
+                            <option value="Inference">Inference</option>
+                            <option value="Data Processing">Data Processing</option>
+                        </select>
+                        <select id="wl-dc-id" required>
+                            <option value="">Select Data Center</option>
+                        </select>
+                        <button class="btn-primary" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container">
+                <table id="table-wls">
+                    <thead><tr><th>ID</th><th>Name</th><th>Type</th><th>Hosted At</th><th>Action</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Water Consumption Section -->
+        <section id="water" class="page">
+            <header>
+                <h1>Water Consumption Logs</h1>
+            </header>
+            <div class="glass form-container">
+                <form id="form-water">
+                    <div class="input-group">
+                        <input type="number" id="w-liters" placeholder="Liters Used" step="0.01" min="0" required>
+                        <input type="date" id="w-date" required>
+                        <select id="w-dc-id" required><option value="">Select Data Center</option></select>
+                        <select id="w-wl-id" required><option value="">Select Workload</option></select>
+                        <button class="btn-primary" type="submit">Log Water</button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container">
+                <table id="table-water">
+                    <thead><tr><th>ID</th><th>Liters</th><th>Date</th><th>Data Center</th><th>Workload</th><th>Action</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Analytics Section -->
+        <section id="analytics" class="page">
+            <header>
+                <h1>Reports & Analytics</h1>
+            </header>
+            <div class="cards-grid">
+                <div class="card glass-dark">
+                    <h3>Water per Data Center</h3>
+                    <ul id="rep-water-dc" class="metrics-list"></ul>
+                </div>
+                <div class="card glass-dark">
+                    <h3>Water per Workload</h3>
+                    <ul id="rep-water-wl" class="metrics-list"></ul>
+                </div>
+                <div class="card glass-dark">
+                    <h3>Top Efficient Cooling Systems</h3>
+                    <ul id="rep-cooling" class="metrics-list"></ul>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
