@@ -8,7 +8,7 @@ load_dotenv()
 
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_USER = os.getenv("DB_USER", "root")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "password")  # Change as required
+DB_PASSWORD = os.getenv("DB_PASSWORD", "Chotu2006#")  # Change as required
 DB_NAME = os.getenv("DB_NAME", "water_ai_db")
 
 def get_connection():
